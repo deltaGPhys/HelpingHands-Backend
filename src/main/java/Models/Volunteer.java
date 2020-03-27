@@ -1,12 +1,11 @@
 package Models;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 
 @Entity
-public class Recipient {
+public class Volunteer {
 
     @Id
     private Long id;
@@ -15,23 +14,19 @@ public class Recipient {
     private String phoneNum;
     @Email
     private String email;
-    private String areaOfNeed;
     private String password;
-    private String location;
     private String link;
 
-    public Recipient() {
+    public Volunteer() {
     }
 
-    public Recipient(Long id, String firstName, String lastName, String phoneNum, String email, String areaOfNeed, String password, String location, String link) {
+    public Volunteer(Long id, String firstName, String lastName, String phoneNum, String email, String password, String link) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
         this.email = email;
-        this.areaOfNeed = areaOfNeed;
         this.password = password;
-        this.location = location;
         this.link = link;
     }
 
@@ -75,28 +70,12 @@ public class Recipient {
         this.email = email;
     }
 
-    public String getAreaOfNeed() {
-        return areaOfNeed;
-    }
-
-    public void setAreaOfNeed(String areaOfNeed) {
-        this.areaOfNeed = areaOfNeed;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public String getLink() {
