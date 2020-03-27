@@ -1,10 +1,7 @@
 package com.example.demo;
 
-
-
-import java.util.Properties;
-
 //import javax.jms.Session;
+import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -14,14 +11,20 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendMail {
+       private String fromEmailAddress = "";
+       private String toEmailAddress = "";
 
-    public static void main(String[] args) {
 
-        // Recipient's email ID needs to be mentioned.
-        String to = "dtrombello@gmail.com";
+     //public static void main(String[] args) {
+
+    public void sendMessage (String fromEmailAddress, String toEmailAddress){
+         // Recipient's email ID needs to be mentioned.
+        String to = toEmailAddress;
+        //String to = "dtrombello@gmail.com";
 
         // Sender's email ID needs to be mentioned
-        String from = "ddsrwebsite2@gmail.com";
+        //String from = "ddsrwebsite2@gmail.com";
+        String from = fromEmailAddress;
 
         // Assuming you are sending email from through gmails smtp
         String host = "smtp.gmail.com";
@@ -40,7 +43,7 @@ public class SendMail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("ddsrwebsite2@gmail.com", "@leapFrogStampede42");
+                return new PasswordAuthentication("ddsrwebsite2@gmail.com", "Password");
 
             }
 
