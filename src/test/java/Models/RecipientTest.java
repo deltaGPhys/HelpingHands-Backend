@@ -4,13 +4,18 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 
 class RecipientTest {
     private Recipient recipient;
+    private Request
+    private List<Request> requestList;
 
     @BeforeEach
     void setUp() {
-        recipient = new Recipient(2L, "Person", "InNeed", "302-555-9876", "helpme@gmail.com", "I need a prescription picked up", "Password", "Hartley", "www.linkedin.com/davidtrom");
+
+        recipient = new Recipient(2L, "Person", "InNeed", "302-555-9876", "helpme@gmail.com", "Password", "Hartley", "www.linkedin.com/davidtrom");
     }
 
     @Test
@@ -68,18 +73,6 @@ class RecipientTest {
         Assertions.assertEquals("inNeed@gmail.com", recipient.getEmail());
     }
 
-
-    @Test
-    void getAreaOfNeed() {
-        Assertions.assertEquals("I need a prescription picked up", recipient.getAreaOfNeed());
-    }
-
-    @Test
-    void setAreaOfNeed() {
-        recipient.setAreaOfNeed("I need groceries picked up");
-        Assertions.assertEquals("I need groceries picked up", recipient.getAreaOfNeed());
-    }
-
     @Test
     void getPassword() {
         Assertions.assertEquals("Password", recipient.getPassword());
@@ -111,5 +104,13 @@ class RecipientTest {
     void setLink() {
         recipient.setLink("www.facebook.com/daveT");
         Assertions.assertEquals("www.facebook.com/daveT", recipient.getLink());
+    }
+
+    @Test
+    void getRequests() {
+    }
+
+    @Test
+    void setRequests() {
     }
 }

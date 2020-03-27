@@ -1,9 +1,13 @@
 package Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
+import java.util.List;
 
 @Entity
 public class Recipient {
@@ -15,24 +19,26 @@ public class Recipient {
     private String phoneNum;
     @Email
     private String email;
-    private String areaOfNeed;
     private String password;
     private String location;
     private String link;
+    @OneToMany
+    @JsonIgnore
+    private List<Request> requests;
 
     public Recipient() {
     }
 
-    public Recipient(Long id, String firstName, String lastName, String phoneNum, String email, String areaOfNeed, String password, String location, String link) {
+    public Recipient(Long id, String firstName, String lastName, String phoneNum, String email, String password, String location, String link, List<Request> requests) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
         this.email = email;
-        this.areaOfNeed = areaOfNeed;
         this.password = password;
         this.location = location;
         this.link = link;
+        this.requests = requests;
     }
 
     public Long getId() {
@@ -75,14 +81,6 @@ public class Recipient {
         this.email = email;
     }
 
-    public String getAreaOfNeed() {
-        return areaOfNeed;
-    }
-
-    public void setAreaOfNeed(String areaOfNeed) {
-        this.areaOfNeed = areaOfNeed;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -105,5 +103,13 @@ public class Recipient {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
     }
 }
