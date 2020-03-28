@@ -10,10 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RequestTest {
     private Request request;
+    private Recipient recipient1, recipient2;
 
     @BeforeEach
     void setUp() {
-        request = new Request(7L, LocalDate.of(2020, 3, 27), "Pick-up", "I need a prescription picked up");
+        recipient1 = new Recipient();
+        request = new Request(7L, LocalDate.of(2020, 3, 27), "Pick-up", "I need a prescription picked up", recipient1 );
     }
 
     @Test
@@ -60,4 +62,14 @@ class RequestTest {
         Assertions.assertEquals("I need a meal delivered", request.getRequestDescription());
     }
 
+    @Test
+    void getRecipient() {
+        Assertions.assertEquals(recipient1, request.getRecipient());
+    }
+
+    @Test
+    void setRecipient() {
+        request.setRecipient(recipient2);
+        Assertions.assertEquals(recipient2, request.getRecipient());
+    }
 }
