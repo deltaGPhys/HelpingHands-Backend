@@ -15,7 +15,7 @@ class RecipientTest {
 
     @BeforeEach
     void setUp() {
-        recipient = new Recipient(2L, "Person", "InNeed", "302-555-9876", "helpme@gmail.com", "Password", "Hartley", "www.linkedin.com/davidtrom", requestList);
+        recipient = new Recipient(2L, "Person", "InNeed", "302-555-9876", "helpme@gmail.com", "Password", "XYZ123+=","Hartley", "www.linkedin.com/davidtrom", requestList);
         List<Request> theList = recipient.getRequests();
         theList.add(r1);
         theList.add(r2);
@@ -86,8 +86,9 @@ class RecipientTest {
 
     @Test
     void setPassword() {
-        recipient.setPassword("NewPassword");
-        Assertions.assertEquals("NewPassword", recipient.getPassword());
+        recipient.setPassword("NewP@ssword9");
+        System.out.println(recipient.getPassword());
+        Assertions.assertTrue(recipient.getPassword() != null);
     }
 
     @Test
@@ -122,6 +123,27 @@ class RecipientTest {
         List<Request> thisList = recipient.getRequests();
         thisList.add(r5);
         thisList.add(r6);
-        //requestList.set(thisList);
+        recipient.setRequests(thisList);
+        Assertions.assertEquals(thisList, recipient.getRequests());
+    }
+
+    @Test
+    void setRequests2() {
+        List<Request> thisList = recipient.getRequests();
+        thisList.add(r5);
+        thisList.add(r6);
+        recipient.setRequests(thisList);
+        Assertions.assertEquals(recipient.getRequests().size(), 6);
+    }
+
+    @Test
+    void getSalt() {
+        Assertions.assertEquals("XYZ123+=",recipient.getSalt());
+    }
+
+    @Test
+    void setSalt() {
+        recipient.setSalt("890RED-");
+        Assertions.assertEquals("890RED-", recipient.getSalt());
     }
 }

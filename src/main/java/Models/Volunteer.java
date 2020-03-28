@@ -1,5 +1,8 @@
 package Models;
 
+import Validators.PasswordUtils;
+import Validators.PasswordValidator;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
@@ -12,7 +15,7 @@ public class Volunteer {
     private String firstName;
     private String lastName;
     private String phoneNum;
-    @Email
+    @Email(regexp = "^[a-zA-Z0-9._%$!#+\\-]+@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$")
     private String email;
     private String password;
     private String salt;
@@ -77,7 +80,11 @@ public class Volunteer {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        if(PasswordValidator.validatePassword(password)) {
+            String salt = PasswordUtils.getSalt(30);
+            setSalt(salt);
+            this.password = PasswordUtils.generateSecurePassword(password, salt);
+        }
     }
 
     public String getSalt() {

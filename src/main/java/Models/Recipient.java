@@ -1,6 +1,8 @@
 package Models;
 
 
+import Validators.PasswordUtils;
+import Validators.PasswordValidator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
@@ -18,9 +20,10 @@ public class Recipient {
     private String firstName;
     private String lastName;
     private String phoneNum;
-    @Email
+    @Email(regexp = "^[a-zA-Z0-9._%$!#+\\-]+@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$")
     private String email;
     private String password;
+    private String salt;
     private String location;
     private String link;
     @OneToMany
@@ -30,13 +33,14 @@ public class Recipient {
     public Recipient() {
     }
 
-    public Recipient(Long id, String firstName, String lastName, String phoneNum, String email, String password, String location, String link, List<Request> requests) {
+    public Recipient(Long id, String firstName, String lastName, String phoneNum, String email, String password, String salt, String location, String link, List<Request> requests) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
         this.email = email;
         this.password = password;
+        this.salt = salt;
         this.location = location;
         this.link = link;
         this.requests = requests;
@@ -79,7 +83,7 @@ public class Recipient {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+            this.email = email;
     }
 
     public String getPassword() {
@@ -87,7 +91,19 @@ public class Recipient {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        if(PasswordValidator.validatePassword(password)) {
+            String salt = PasswordUtils.getSalt(30);
+            setSalt(salt);
+            this.password = PasswordUtils.generateSecurePassword(password, salt);
+        }
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public String getLocation() {
