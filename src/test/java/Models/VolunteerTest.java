@@ -11,7 +11,7 @@ class VolunteerTest {
 
     @BeforeEach
     void setUp() {
-        volunteer = new Volunteer(1L, "Jane", "Doe", "302-123-5556", "janedoe@gmail.com", "J@neDoe1", "www.linkedin.com/janedoe");
+        volunteer = new Volunteer(1L, "Jane", "Doe", "302-123-5556", "janedoe@gmail.com", "J@neDoe1", "XYZ123+=", "www.linkedin.com/janedoe");
     }
 
     @Test
@@ -94,9 +94,15 @@ class VolunteerTest {
 
     @Test
     void getSalt() {
+        String expected = "XYZ123+=";
+        String actual = volunteer.getSalt();
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void setSalt() {
-    }
+            String expected = "890RED-";
+            volunteer.setSalt(expected);
+            Assertions.assertEquals(expected, volunteer.getSalt());
+        }
 }

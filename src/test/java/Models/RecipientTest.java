@@ -4,18 +4,24 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 class RecipientTest {
     private Recipient recipient;
-    private Request r1, r2, r3, r4;
-    private List<Request> requestList;
+    private Request r1, r2, r3, r4, r5, r6;
+    private List<Request> requestList = new ArrayList<>(0);
 
     @BeforeEach
     void setUp() {
-
         recipient = new Recipient(2L, "Person", "InNeed", "302-555-9876", "helpme@gmail.com", "Password", "Hartley", "www.linkedin.com/davidtrom", requestList);
+        List<Request> theList = recipient.getRequests();
+        theList.add(r1);
+        theList.add(r2);
+        theList.add(r3);
+        theList.add(r4);
+        recipient.setRequests(theList);
     }
 
     @Test
@@ -108,9 +114,14 @@ class RecipientTest {
 
     @Test
     void getRequests() {
+        Assertions.assertEquals(requestList, recipient.getRequests());
     }
 
     @Test
     void setRequests() {
+        List<Request> thisList = recipient.getRequests();
+        thisList.add(r5);
+        thisList.add(r6);
+        //requestList.set(thisList);
     }
 }
