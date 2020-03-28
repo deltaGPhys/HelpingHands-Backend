@@ -91,4 +91,12 @@ class VolunteerTest {
         volunteer.setLink("www.facebook.com/suesmith");
         Assertions.assertEquals("www.facebook.com/suesmith", volunteer.getLink());
     }
+
+    @Test
+    void getSalt() {
+    }
+
+    @Test
+    void setSalt() {
+    }
 }

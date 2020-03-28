@@ -15,18 +15,20 @@ public class Volunteer {
     @Email
     private String email;
     private String password;
+    private String salt;
     private String link;
 
     public Volunteer() {
     }
 
-    public Volunteer(Long id, String firstName, String lastName, String phoneNum, String email, String password, String link) {
+    public Volunteer(Long id, String firstName, String lastName, String phoneNum, String email, String password, String salt, String link) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
         this.email = email;
         this.password = password;
+        this.salt = salt;
         this.link = link;
     }
 
@@ -76,6 +78,14 @@ public class Volunteer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public String getLink() {
