@@ -9,13 +9,13 @@ import java.util.List;
 
 class RecipientTest {
     private Recipient recipient;
-    private Request
+    private Request r1, r2, r3, r4;
     private List<Request> requestList;
 
     @BeforeEach
     void setUp() {
 
-        recipient = new Recipient(2L, "Person", "InNeed", "302-555-9876", "helpme@gmail.com", "Password", "Hartley", "www.linkedin.com/davidtrom");
+        recipient = new Recipient(2L, "Person", "InNeed", "302-555-9876", "helpme@gmail.com", "Password", "Hartley", "www.linkedin.com/davidtrom", requestList);
     }
 
     @Test

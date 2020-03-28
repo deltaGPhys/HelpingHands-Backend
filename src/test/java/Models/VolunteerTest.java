@@ -49,7 +49,7 @@ class VolunteerTest {
 
     @Test
     void getPhoneNum() {
-        Assertions.assertEquals("302-123-5556", volunteer.getLastName());
+        Assertions.assertEquals("302-123-5556", volunteer.getPhoneNum());
     }
 
     @Test
@@ -76,13 +76,19 @@ class VolunteerTest {
 
     @Test
     void setPassword() {
+        volunteer.setPassword("SueSm!th5");
+        Assertions.assertEquals("SueSm!th5", volunteer.getPassword());
     }
 
     @Test
     void getLink() {
+        Assertions.assertEquals("www.linkedin.com/janedoe", volunteer.getLink());
     }
+
 
     @Test
     void setLink() {
+        volunteer.setLink("www.facebook.com/suesmith");
+        Assertions.assertEquals("www.facebook.com/suesmith", volunteer.getLink());
     }
 }
