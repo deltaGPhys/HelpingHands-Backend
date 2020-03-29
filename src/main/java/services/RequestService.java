@@ -16,13 +16,12 @@ class RequestService {
     @Autowired
     private RequestRepository requestRepository;
 
-    public Request createRequest (Request request, Recipient recipient){
+    public Request createRequest (Request request){
         request.setDatePosted(request.getDatePosted());
         request.setTypeOfRequest(request.getTypeOfRequest());
         request.setRequestDescription(request.getRequestDescription());
-        request.setRecipient(recipient);
+        request.setRecipient(request.getRecipient());
         return requestRepository.save(request);
-        //Request toUpdate = requestRepository.findById(request.getId());
     }
 
     public List<Request> displayAllRequestsByDatePosted(){
@@ -35,8 +34,9 @@ class RequestService {
         return cltnRequests;
     }
 
-    public void deleteRequest(Long id){
+    public Boolean deleteRequest(Long id){
         requestRepository.deleteById(id);
+        return true;
     }
     
     

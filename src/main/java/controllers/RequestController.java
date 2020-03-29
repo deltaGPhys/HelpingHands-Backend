@@ -18,14 +18,22 @@ class RequestController {
     private RequestService requestService;
 
     @PostMapping("/create")
-    public ResponseEntity<Request> createRequest(@RequestBody Request request, @RequestBody Recipient recipent){
-        requestService.createRequest(request, recipent);
+    public ResponseEntity<Request> createRequest(@RequestBody Request request){
+        requestService.createRequest(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/remove/{requestId}")
+    public ResponseEntity<Boolean> deleteRequest(Long id){
+        requestService.deleteRequest(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 
     @GetMapping
     public ResponseEntity<List<Request>> displayAllRequestsbyDate (){
         requestService.displayAllRequestsByDatePosted();
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }
