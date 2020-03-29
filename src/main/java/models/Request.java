@@ -8,13 +8,13 @@ import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Entity
-class Request {
+public class Request {
 
     @Id
     private Long id;
-    LocalDate datePosted;
-    String typeOfRequest;
-    String requestDescription;
+    private LocalDate datePosted = LocalDate.now();
+    private String typeOfRequest;
+    private String requestDescription;
     @ManyToOne
     @JsonIgnore
     private Recipient recipient;
