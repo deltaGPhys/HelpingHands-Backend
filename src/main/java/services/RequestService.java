@@ -17,10 +17,11 @@ class RequestService {
     private RequestRepository requestRepository;
 
     public Request createRequest (Request request){
-        request.setDatePosted(request.getDatePosted());
-        request.setTypeOfRequest(request.getTypeOfRequest());
-        request.setRequestDescription(request.getRequestDescription());
-        request.setRecipient(request.getRecipient());
+        Request newRequest = new Request();
+        newRequest.setDatePosted(request.getDatePosted());
+        newRequest.setTypeOfRequest(request.getTypeOfRequest());
+        newRequest.setRequestDescription(request.getRequestDescription());
+        newRequest.setRecipient(request.getRecipient());
         return requestRepository.save(request);
     }
 
@@ -35,8 +36,11 @@ class RequestService {
     }
 
     public Boolean deleteRequest(Long id){
-        requestRepository.deleteById(id);
-        return true;
+        if(requestRepository.findById(id).isPresent()){
+            requestRepository.deleteById(id);
+            return true;
+        }
+        else return false;
     }
     
     
