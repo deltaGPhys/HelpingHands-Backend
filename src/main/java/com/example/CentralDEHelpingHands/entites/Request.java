@@ -1,8 +1,10 @@
-package models;
+package com.example.CentralDEHelpingHands.entites;
 
+import com.example.CentralDEHelpingHands.entites.Recipient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
@@ -11,6 +13,7 @@ import java.time.LocalDate;
 public class Request {
 
     @Id
+    @GeneratedValue
     private Long id;
     private LocalDate datePosted = LocalDate.now();
     private String typeOfRequest;

@@ -1,16 +1,23 @@
-package models;
+package com.example.CentralDEHelpingHands.entites;
 
-import validators.PasswordUtils;
-import validators.PasswordValidator;
+
+import com.example.CentralDEHelpingHands.validators.PasswordUtils;
+import com.example.CentralDEHelpingHands.validators.PasswordValidator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Volunteer {
+public class Recipient {
 
     @Id
+    @GeneratedValue
     private Long id;
     private String firstName;
     private String lastName;
@@ -19,12 +26,16 @@ public class Volunteer {
     private String email;
     private String password;
     private String salt;
+    private String location;
     private String link;
+    @OneToMany
+    @JsonIgnore
+    private List<Request> requests = new ArrayList<>(0);
 
-    public Volunteer() {
+    public Recipient() {
     }
 
-    public Volunteer(Long id, String firstName, String lastName, String phoneNum, String email, String password, String salt, String link) {
+    public Recipient(Long id, String firstName, String lastName, String phoneNum, String email, String password, String salt, String location, String link, List<Request> requests) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,7 +43,9 @@ public class Volunteer {
         this.email = email;
         this.password = password;
         this.salt = salt;
+        this.location = location;
         this.link = link;
+        this.requests = requests;
     }
 
     public Long getId() {
@@ -72,7 +85,7 @@ public class Volunteer {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+            this.email = email;
     }
 
     public String getPassword() {
@@ -95,11 +108,27 @@ public class Volunteer {
         this.salt = salt;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getLink() {
         return link;
     }
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public List<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
     }
 }

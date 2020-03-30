@@ -1,5 +1,7 @@
 package models;
 
+import com.example.CentralDEHelpingHands.entites.Recipient;
+import com.example.CentralDEHelpingHands.entites.Request;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

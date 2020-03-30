@@ -1,10 +1,9 @@
-package services;
+package com.example.CentralDEHelpingHands.services;
 
-import models.Recipient;
-import models.Request;
+import com.example.CentralDEHelpingHands.entites.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.RequestRepository;
+import com.example.CentralDEHelpingHands.repositories.RequestRepository;
 
 import java.util.*;
 

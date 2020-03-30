@@ -1,7 +1,7 @@
-package controllers;
+package com.example.CentralDEHelpingHands.controllers;
 
-import models.Volunteer;
-import services.VolunteerService;
+import com.example.CentralDEHelpingHands.entites.Volunteer;
+import com.example.CentralDEHelpingHands.services.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

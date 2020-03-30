@@ -1,23 +1,22 @@
-package controllers;
+package com.example.CentralDEHelpingHands.controllers;
 
-import models.Recipient;
-import models.Request;
+import com.example.CentralDEHelpingHands.entites.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import services.RequestService;
+import com.example.CentralDEHelpingHands.services.RequestService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/requests")
+//@RequestMapping("/requests")
 class RequestController {
 
     @Autowired
     private RequestService requestService;
 
-    @PostMapping("/create")
+    @PostMapping("/requests/create")
     public ResponseEntity<Request> createRequest(@RequestBody Request request){
         requestService.createRequest(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -30,7 +29,7 @@ class RequestController {
     }
 
 
-    @GetMapping
+    @GetMapping("/requests")
     public ResponseEntity<List<Request>> displayAllRequestsbyDate (){
         requestService.displayAllRequestsByDatePosted();
         return new ResponseEntity<>(HttpStatus.OK);

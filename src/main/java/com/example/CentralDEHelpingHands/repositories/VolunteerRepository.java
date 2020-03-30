@@ -1,6 +1,6 @@
-package repositories;
+package com.example.CentralDEHelpingHands.repositories;
 
-import models.Volunteer;
+import com.example.CentralDEHelpingHands.entites.Volunteer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
