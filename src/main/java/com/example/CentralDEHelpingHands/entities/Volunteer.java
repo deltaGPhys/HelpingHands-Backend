@@ -1,7 +1,9 @@
-package com.example.CentralDEHelpingHands.entites;
+package com.example.CentralDEHelpingHands.entities;
 
+import com.example.CentralDEHelpingHands.validators.EmailValidator;
 import com.example.CentralDEHelpingHands.validators.PasswordUtils;
 import com.example.CentralDEHelpingHands.validators.PasswordValidator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,23 +19,22 @@ public class Volunteer {
     private String firstName;
     private String lastName;
     private String phoneNum;
-    @Email(regexp = "^[a-zA-Z0-9._%$!#+\\-]+@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$")
     private String email;
     private String password;
-    private String salt;
+    //private String salt;
     private String link;
 
     public Volunteer() {
     }
 
-    public Volunteer(Long id, String firstName, String lastName, String phoneNum, String email, String password, String salt, String link) {
+    public Volunteer(Long id, String firstName, String lastName, String phoneNum, String email, String password, String link) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
         this.email = email;
         this.password = password;
-        this.salt = salt;
+        //this.salt = salt;
         this.link = link;
     }
 
@@ -74,7 +75,9 @@ public class Volunteer {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if( EmailValidator.validateEmail(email)){
+                this.email = email;
+        }
     }
 
     public String getPassword() {
@@ -84,18 +87,17 @@ public class Volunteer {
     public void setPassword(String password) {
         if(PasswordValidator.validatePassword(password)) {
             String salt = PasswordUtils.getSalt(30);
-            setSalt(salt);
-            this.password = PasswordUtils.generateSecurePassword(password, salt);
+            this.password = salt + ":" + PasswordUtils.generateSecurePassword(password, salt);
         }
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+//    public String getSalt() {
+//        return salt;
+//    }
+//
+//    public void setSalt(String salt) {
+//        this.salt = salt;
+//    }
 
     public String getLink() {
         return link;

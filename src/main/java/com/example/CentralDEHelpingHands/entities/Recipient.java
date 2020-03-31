@@ -1,4 +1,4 @@
-package com.example.CentralDEHelpingHands.entites;
+package com.example.CentralDEHelpingHands.entities;
 
 
 import com.example.CentralDEHelpingHands.validators.PasswordUtils;

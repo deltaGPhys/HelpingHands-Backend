@@ -1,6 +1,5 @@
-package com.example.CentralDEHelpingHands.entites;
+package com.example.CentralDEHelpingHands.entities;
 
-import com.example.CentralDEHelpingHands.entites.Recipient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
