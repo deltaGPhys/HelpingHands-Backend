@@ -18,7 +18,6 @@ public class VolunteerService {
         newVolunteer.setLastName(volunteer.getLastName());
         newVolunteer.setPhoneNum(volunteer.getPhoneNum());
         newVolunteer.setEmail(volunteer.getEmail());
-        //newVolunteer.setSalt(PasswordUtils.getSalt(30));
         newVolunteer.setPassword(volunteer.getPassword());
         newVolunteer.setLink(volunteer.getLink());
         return volunteerRepository.save(volunteer);

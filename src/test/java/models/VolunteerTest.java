@@ -80,20 +80,6 @@ class VolunteerTest {
         Assertions.assertTrue(volunteer.getPassword() != null);
     }
 
-//    @Test
-//    void getSalt() {
-//        String expected = "XYZ123+=";
-//        String actual = volunteer.getSalt();
-//        Assertions.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    void setSalt() {
-//        String expected = "890RED-";
-//        volunteer.setSalt(expected);
-//        Assertions.assertEquals(expected, volunteer.getSalt());
-//    }
-
     @Test
     void getLink() {
         Assertions.assertEquals("www.linkedin.com/janedoe", volunteer.getLink());
