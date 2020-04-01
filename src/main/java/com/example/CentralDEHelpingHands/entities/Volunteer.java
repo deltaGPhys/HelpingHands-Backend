@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
+
 
 @Entity
 public class Volunteer {
@@ -21,7 +21,6 @@ public class Volunteer {
     private String phoneNum;
     private String email;
     private String password;
-    //private String salt;
     private String link;
 
     public Volunteer() {
@@ -90,14 +89,6 @@ public class Volunteer {
             this.password = salt + ":" + PasswordUtils.generateSecurePassword(password, salt);
         }
     }
-
-//    public String getSalt() {
-//        return salt;
-//    }
-//
-//    public void setSalt(String salt) {
-//        this.salt = salt;
-//    }
 
     public String getLink() {
         return link;

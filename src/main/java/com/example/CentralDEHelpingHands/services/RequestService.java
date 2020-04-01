@@ -17,7 +17,7 @@ class RequestService {
 
     public Request createRequest (Request request){
         Request newRequest = new Request();
-        newRequest.setDatePosted(request.getDatePosted());
+        //newRequest.setDatePosted(request.getDatePosted());
         newRequest.setTypeOfRequest(request.getTypeOfRequest());
         newRequest.setRequestDescription(request.getRequestDescription());
         newRequest.setRecipient(request.getRecipient());

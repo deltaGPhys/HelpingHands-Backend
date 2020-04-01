@@ -15,7 +15,7 @@ class RequestTest {
     @BeforeEach
     void setUp() {
         recipient1 = new Recipient();
-        request = new Request(7L, LocalDate.of(2020, 3, 27), "Pick-up", "I need a prescription picked up", recipient1 );
+        request = new Request(7L,"Pick-up", "I need a prescription picked up", recipient1 );
     }
 
     @Test
