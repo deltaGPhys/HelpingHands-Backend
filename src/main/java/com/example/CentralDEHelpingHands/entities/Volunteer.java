@@ -33,7 +33,6 @@ public class Volunteer {
         this.phoneNum = phoneNum;
         this.email = email;
         this.password = password;
-        //this.salt = salt;
         this.link = link;
     }
 

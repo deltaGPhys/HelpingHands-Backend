@@ -17,17 +17,17 @@ class RecipientController {
     private RecipientService recipientService;
 
     @PostMapping("/create")
-    public ResponseEntity <Recipient> createRecipient (Recipient recipient){
+    public ResponseEntity <Recipient> createRecipient (@RequestBody Recipient recipient){
         return new ResponseEntity<>(recipientService.createRecipient(recipient), HttpStatus.CREATED);
     }
 
-    @GetMapping("/requests")
-    public ResponseEntity <Iterable <Request>> showRecipientRequests (Long id){
+    @GetMapping("/requests/{id}")
+    public ResponseEntity <Iterable <Request>> showRecipientRequests (@PathVariable Long id){
         return new ResponseEntity<>(recipientService.showRecipientRequests(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/remove/{id}")
-    public ResponseEntity <Boolean> deleteRecipient (Long id){
+    public ResponseEntity <Boolean> deleteRecipient (@PathVariable Long id){
         return new ResponseEntity<>(recipientService.deleteRecipient(id), HttpStatus.OK);
     }
 

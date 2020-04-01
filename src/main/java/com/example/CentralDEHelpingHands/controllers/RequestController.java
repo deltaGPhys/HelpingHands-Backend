@@ -16,14 +16,19 @@ class RequestController {
     @Autowired
     private RequestService requestService;
 
-    @PostMapping("/create")
-    public ResponseEntity<Request> createRequest(@RequestBody Request request, Long id){
-        return new ResponseEntity<>(requestService.createRequest(request, id),HttpStatus.CREATED);
+//    @PostMapping("/create")
+//    public ResponseEntity<Request> createRequest(@RequestBody Request request, Long recipientId){
+//        return new ResponseEntity<>(requestService.createRequest(request, recipientId),HttpStatus.CREATED);
+//    }
+
+        @PostMapping("/create")
+    public ResponseEntity<Request> createRequest(@RequestBody Request request){
+        return new ResponseEntity<>(requestService.createRequest(request),HttpStatus.CREATED);
     }
 
     @DeleteMapping("/remove/{requestId}")
-    public ResponseEntity<Boolean> deleteRequest(Long id){
-        return new ResponseEntity<>(requestService.deleteRequest(id), HttpStatus.OK);
+    public ResponseEntity<Boolean> deleteRequest(@PathVariable Long requestId){
+        return new ResponseEntity<>(requestService.deleteRequest(requestId), HttpStatus.OK);
     }
 
     @GetMapping

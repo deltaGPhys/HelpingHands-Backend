@@ -11,19 +11,18 @@ import java.util.*;
 
 
 @Service
-public
-class RequestService {
+public class RequestService {
 
     @Autowired
     private RequestRepository requestRepository;
-    @Autowired
-    private RecipientRepository recipientRepository;
+//    @Autowired
+//    private RecipientRepository recipientRepository;
 
-    public Request createRequest (Request request, Long id){
+    public Request createRequest (Request request){
         Request newRequest = new Request();
         newRequest.setTypeOfRequest(request.getTypeOfRequest());
         newRequest.setRequestDescription(request.getRequestDescription());
-        newRequest.setRecipient(recipientRepository.findById(id).get());
+        //newRequest.setRecipient(recipientRepository.findById(recipientId).get());
         return requestRepository.save(request);
     }
 
@@ -36,6 +35,7 @@ class RequestService {
     }
 
     public List<Request> displayAllRequestsByDatePosted(){
+        //return requestRepository.findAllByDatePostedOrderByDatePostedAsc();
         Iterable <Request> requests = requestRepository.findAll();
         List<Request> cltnRequests = new ArrayList<>();
         for(Request r : requests){
