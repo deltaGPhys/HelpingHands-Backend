@@ -17,8 +17,8 @@ class RequestController {
     private RequestService requestService;
 
     @PostMapping("/create")
-    public ResponseEntity<Request> createRequest(@RequestBody Request request){
-        return new ResponseEntity<>(requestService.createRequest(request),HttpStatus.CREATED);
+    public ResponseEntity<Request> createRequest(@RequestBody Request request, Long id){
+        return new ResponseEntity<>(requestService.createRequest(request, id),HttpStatus.CREATED);
     }
 
     @DeleteMapping("/remove/{requestId}")

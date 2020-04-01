@@ -26,7 +26,6 @@ public class Request {
 
     public Request(Long id, String typeOfRequest, String requestDescription, Recipient recipient) {
         this.id = id;
-        //this.datePosted = datePosted;
         this.typeOfRequest = typeOfRequest;
         this.requestDescription = requestDescription;
         this.recipient = recipient;

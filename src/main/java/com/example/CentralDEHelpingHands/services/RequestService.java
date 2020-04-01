@@ -1,6 +1,8 @@
 package com.example.CentralDEHelpingHands.services;
 
+import com.example.CentralDEHelpingHands.entities.Recipient;
 import com.example.CentralDEHelpingHands.entities.Request;
+import com.example.CentralDEHelpingHands.repositories.RecipientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.CentralDEHelpingHands.repositories.RequestRepository;
@@ -14,13 +16,22 @@ class RequestService {
 
     @Autowired
     private RequestRepository requestRepository;
+    @Autowired
+    private RecipientRepository recipientRepository;
 
-    public Request createRequest (Request request){
+    public Request createRequest (Request request, Long id){
         Request newRequest = new Request();
-        //newRequest.setDatePosted(request.getDatePosted());
         newRequest.setTypeOfRequest(request.getTypeOfRequest());
         newRequest.setRequestDescription(request.getRequestDescription());
-        newRequest.setRecipient(request.getRecipient());
+        newRequest.setRecipient(recipientRepository.findById(id).get());
+        return requestRepository.save(request);
+    }
+
+    public Request updateRequest (Request request){
+        Request requestToUpdate = requestRepository.findById(request.getId()).get();
+        requestToUpdate.setTypeOfRequest(request.getTypeOfRequest());
+        requestToUpdate.setRequestDescription(request.getRequestDescription());
+        requestToUpdate.setRecipient(request.getRecipient());
         return requestRepository.save(request);
     }
 
