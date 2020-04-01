@@ -13,11 +13,11 @@ import java.util.List;
 class RecipientTest {
     private Recipient recipient;
     private Request r1, r2, r3, r4, r5, r6;
-    private List<Request> requestList = new ArrayList<>(0);
+    //private List<Request> requestList = new ArrayList<>(0);
 
     @BeforeEach
     void setUp() {
-        recipient = new Recipient(2L, "Person", "InNeed", "302-555-9876", "helpme@gmail.com", "Password", "XYZ123+=","Hartley", "www.linkedin.com/davidtrom", requestList);
+        recipient = new Recipient(2L, "Person", "InNeed", "302-555-9876", "helpme@gmail.com", "Th!sPassword7", "Hartley", "www.linkedin.com/davidtrom");
         List<Request> theList = recipient.getRequests();
         theList.add(r1);
         theList.add(r2);
@@ -83,7 +83,7 @@ class RecipientTest {
 
     @Test
     void getPassword() {
-        Assertions.assertEquals("Password", recipient.getPassword());
+        Assertions.assertEquals("Th!sPassword7", recipient.getPassword());
     }
 
     @Test
@@ -117,7 +117,7 @@ class RecipientTest {
 
     @Test
     void getRequests() {
-        Assertions.assertEquals(requestList, recipient.getRequests());
+        Assertions.assertEquals(4, recipient.getRequests().size());
     }
 
     @Test
@@ -136,16 +136,5 @@ class RecipientTest {
         thisList.add(r6);
         recipient.setRequests(thisList);
         Assertions.assertEquals(recipient.getRequests().size(), 6);
-    }
-
-    @Test
-    void getSalt() {
-        Assertions.assertEquals("XYZ123+=",recipient.getSalt());
-    }
-
-    @Test
-    void setSalt() {
-        recipient.setSalt("890RED-");
-        Assertions.assertEquals("890RED-", recipient.getSalt());
     }
 }
