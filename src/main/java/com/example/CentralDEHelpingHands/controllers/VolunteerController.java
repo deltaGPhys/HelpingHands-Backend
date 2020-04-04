@@ -1,5 +1,6 @@
 package com.example.CentralDEHelpingHands.controllers;
-
+import org.json.JSONObject;
+import org.json.JSONException;
 import com.example.CentralDEHelpingHands.entities.Volunteer;
 import com.example.CentralDEHelpingHands.services.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,14 @@ class VolunteerController {
         return new ResponseEntity<>(volunteerService.deleteVolunteerById(id), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/verify")
+    public ResponseEntity<Volunteer> verifyVolunteer (@RequestBody String data) throws JSONException {
+        JSONObject jsonData = new JSONObject(data);
+        String email = (String) jsonData.get("email");
+        String password = (String) jsonData.get("password");
+        Volunteer verifiedVolunteer = volunteerService.verifyVolunteer(email, password);
+        return (verifiedVolunteer != null) ? new ResponseEntity<>(verifiedVolunteer, HttpStatus.OK)
+                : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
 
 }

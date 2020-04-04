@@ -54,12 +54,14 @@ public class VolunteerService {
         return false;
     }
 
-    public Boolean verifyVolunteer(String email, String password){
+    public Volunteer verifyVolunteer(String email, String password){
         Volunteer volunteerToVerify = volunteerRepository.findByEmail(email);
         String[] storedInfo = volunteerToVerify.getPassword().split(":");
         String salt = storedInfo[0];
         String storedPassword = storedInfo[1];
-        return PasswordUtils.verifyUserPassword(password, storedPassword, salt);
-
+        if(PasswordUtils.verifyUserPassword(password, storedPassword, salt)){
+            return volunteerToVerify;
+        }
+        else return null;
     }
 }
