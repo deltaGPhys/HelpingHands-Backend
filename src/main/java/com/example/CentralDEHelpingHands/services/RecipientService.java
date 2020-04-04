@@ -2,7 +2,9 @@ package com.example.CentralDEHelpingHands.services;
 
 import com.example.CentralDEHelpingHands.entities.Recipient;
 import com.example.CentralDEHelpingHands.entities.Request;
+import com.example.CentralDEHelpingHands.entities.Volunteer;
 import com.example.CentralDEHelpingHands.repositories.RecipientRepository;
+import com.example.CentralDEHelpingHands.validators.PasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +52,16 @@ public class RecipientService {
         return false;
     }
 
-
+    public Recipient verifyRecipient(String email, String password){
+        Recipient recipientToVerify = recipientRepository.findByEmail(email);
+        String[] storedInfo = recipientToVerify.getPassword().split(":");
+        String salt = storedInfo[0];
+        String storedPassword = storedInfo[1];
+        if(PasswordUtils.verifyUserPassword(password, storedPassword, salt)){
+            return recipientToVerify;
+        }
+        else return null;
+    }
 
 
 }

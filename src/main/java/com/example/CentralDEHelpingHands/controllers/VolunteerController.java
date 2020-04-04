@@ -45,4 +45,10 @@ class VolunteerController {
                 : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
+    @PostMapping("/check-email")
+    public ResponseEntity<Boolean> isVolunteerEmailAvailable (@RequestBody String email){
+        return new ResponseEntity<>(volunteerService.emailAvailable(email), HttpStatus.OK);
+    }
+
+
 }
