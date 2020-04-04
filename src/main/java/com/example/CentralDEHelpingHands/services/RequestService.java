@@ -30,7 +30,6 @@ public class RequestService {
         Request requestToUpdate = requestRepository.findById(request.getId()).get();
         requestToUpdate.setTypeOfRequest(request.getTypeOfRequest());
         requestToUpdate.setRequestDescription(request.getRequestDescription());
-        requestToUpdate.setRecipient(request.getRecipient());
         return requestRepository.save(request);
     }
 

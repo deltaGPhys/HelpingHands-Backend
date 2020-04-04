@@ -9,5 +9,4 @@ import java.time.chrono.IsoChronology;
 
 @Repository
 public interface RequestRepository extends CrudRepository<Request, Long> {
-     Iterable<Request> findAllByDatePostedOrderByDatePostedAsc(LocalDate datePosted);
 }
