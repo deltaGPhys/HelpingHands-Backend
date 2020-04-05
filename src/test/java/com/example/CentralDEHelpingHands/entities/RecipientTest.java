@@ -1,12 +1,9 @@
-package models;
+package com.example.CentralDEHelpingHands.entities;
 
-import com.example.CentralDEHelpingHands.entities.Recipient;
-import com.example.CentralDEHelpingHands.entities.Request;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

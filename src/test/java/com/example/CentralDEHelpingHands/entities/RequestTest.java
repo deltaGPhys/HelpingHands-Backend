@@ -1,7 +1,5 @@
-package models;
+package com.example.CentralDEHelpingHands.entities;
 
-import com.example.CentralDEHelpingHands.entities.Recipient;
-import com.example.CentralDEHelpingHands.entities.Request;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -71,5 +69,17 @@ class RequestTest {
     void setRecipient() {
         request.setRecipient(recipient2);
         Assertions.assertEquals(recipient2, request.getRecipient());
+    }
+
+    @Test
+    void getRequestStatus() {
+        Assertions.assertEquals(RequestStatus.OPEN, request.getRequestStatus());
+    }
+
+    @Test
+    void setRequestStatus() {
+        request.setRequestStatus(RequestStatus.IN_PROGRESS);
+        Assertions.assertEquals(RequestStatus.IN_PROGRESS, request.getRequestStatus());
+
     }
 }

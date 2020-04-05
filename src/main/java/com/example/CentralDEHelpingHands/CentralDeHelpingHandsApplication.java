@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-//@EntityScan("com.example.CentralDEHelpingHands.entities")
+//@EntityScan("com.example.CentralDEHelpingHands.com.example.CentralDEHelpingHands.entities")
 @SpringBootApplication
 public class CentralDeHelpingHandsApplication {
 

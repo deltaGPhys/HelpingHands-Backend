@@ -2,7 +2,6 @@ package com.example.CentralDEHelpingHands.services;
 
 import com.example.CentralDEHelpingHands.entities.Recipient;
 import com.example.CentralDEHelpingHands.entities.Request;
-import com.example.CentralDEHelpingHands.entities.Volunteer;
 import com.example.CentralDEHelpingHands.repositories.RecipientRepository;
 import com.example.CentralDEHelpingHands.validators.PasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;

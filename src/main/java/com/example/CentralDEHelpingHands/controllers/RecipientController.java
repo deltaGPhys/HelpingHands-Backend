@@ -1,9 +1,7 @@
 package com.example.CentralDEHelpingHands.controllers;
 
-import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 import com.example.CentralDEHelpingHands.entities.Recipient;
 import com.example.CentralDEHelpingHands.entities.Request;
-import com.example.CentralDEHelpingHands.entities.Volunteer;
 import com.example.CentralDEHelpingHands.services.RecipientService;
 import org.json.JSONException;
 import org.json.JSONObject;

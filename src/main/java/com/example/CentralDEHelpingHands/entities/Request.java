@@ -20,6 +20,7 @@ public class Request {
     @ManyToOne
     @JsonIgnore
     private Recipient recipient;
+    private RequestStatus requestStatus = RequestStatus.OPEN;
 
     public Request() {
     }
@@ -69,5 +70,13 @@ public class Request {
 
     public void setRecipient(Recipient recipient) {
         this.recipient = recipient;
+    }
+
+    public RequestStatus getRequestStatus() {
+        return requestStatus;
+    }
+
+    public void setRequestStatus(RequestStatus requestStatus) {
+        this.requestStatus = requestStatus;
     }
 }
