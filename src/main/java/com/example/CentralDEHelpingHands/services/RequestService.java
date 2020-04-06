@@ -2,6 +2,7 @@ package com.example.CentralDEHelpingHands.services;
 
 import com.example.CentralDEHelpingHands.entities.Recipient;
 import com.example.CentralDEHelpingHands.entities.Request;
+import com.example.CentralDEHelpingHands.entities.RequestStatus;
 import com.example.CentralDEHelpingHands.repositories.RecipientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,15 +34,15 @@ public class RequestService {
         return requestRepository.save(request);
     }
 
-    public List<Request> displayAllRequestsByDatePosted(){
-        //return requestRepository.findAllByDatePostedOrderByDatePostedAsc();
-        Iterable <Request> requests = requestRepository.findAll();
-        List<Request> cltnRequests = new ArrayList<>();
-        for(Request r : requests){
-            cltnRequests.add(r);
-        }
-         cltnRequests.sort(Comparator.comparing(Request::getDatePosted));
-        return cltnRequests;
+    public Iterable<Request> displayAllRequestsByDatePosted(){
+        return requestRepository.findAll();
+//        Iterable <Request> requests = requestRepository.findAll();
+//        List<Request> cltnRequests = new ArrayList<>();
+//        for(Request r : requests){
+//            cltnRequests.add(r);
+//        }
+//         cltnRequests.sort(Comparator.comparing(Request::getDatePosted));
+//        return cltnRequests;
     }
 
     public Boolean deleteRequest(Long id){
@@ -52,5 +53,14 @@ public class RequestService {
         else return false;
     }
     
-    
+    public Request updateStatus (Long id){
+        Request requestToUpdate = requestRepository.findById(id).get();
+        if(requestToUpdate.getRequestStatus().equals(RequestStatus.OPEN)){
+            requestToUpdate.setRequestStatus(RequestStatus.IN_PROGRESS);
+        }
+        else {
+            requestToUpdate.setRequestStatus(RequestStatus.OPEN);
+        }
+        return requestRepository.save(requestToUpdate);
+    }
 }

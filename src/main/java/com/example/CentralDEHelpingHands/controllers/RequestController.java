@@ -16,12 +16,12 @@ class RequestController {
     @Autowired
     private RequestService requestService;
 
-//    @PostMapping("/create")
-//    public ResponseEntity<Request> createRequest(@RequestBody Request request, Long recipientId){
-//        return new ResponseEntity<>(requestService.createRequest(request, recipientId),HttpStatus.CREATED);
-//    }
+    @GetMapping
+    public ResponseEntity<Iterable<Request>> displayAllRequestsbyDate (){
+        return new ResponseEntity<>(requestService.displayAllRequestsByDatePosted(), HttpStatus.OK);
+    }
 
-        @PostMapping("/create")
+    @PostMapping("/create")
     public ResponseEntity<Request> createRequest(@RequestBody Request request){
         return new ResponseEntity<>(requestService.createRequest(request),HttpStatus.CREATED);
     }
@@ -31,15 +31,17 @@ class RequestController {
         return new ResponseEntity<>(requestService.deleteRequest(requestId), HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Request>> displayAllRequestsbyDate (){
-        return new ResponseEntity<>(requestService.displayAllRequestsByDatePosted(), HttpStatus.OK);
+    @PostMapping("/{requestId}/update-status")
+    public ResponseEntity<Request> updateStatus (@PathVariable Long requestId) {
+        requestService.updateStatus(requestId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/hello")
-    public String firstPage() {
-        return "Hello World";
-    }
+
+//    @GetMapping("/hello")
+//    public String firstPage() {
+//        return "Hello World";
+//    }
 
 
 }
