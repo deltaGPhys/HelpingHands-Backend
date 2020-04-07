@@ -37,11 +37,9 @@ class RequestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
-//    @GetMapping("/hello")
-//    public String firstPage() {
-//        return "Hello World";
-//    }
-
+    @GetMapping("/{requestId}")
+    public ResponseEntity<Request> showRequestDetails (@PathVariable Long requestId) {
+        return new ResponseEntity<>(requestService.showRequestDetails(requestId), HttpStatus.OK);
+    }
 
 }

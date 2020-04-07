@@ -63,4 +63,8 @@ public class RequestService {
         }
         return requestRepository.save(requestToUpdate);
     }
+
+    public Request showRequestDetails(Long requestId) {
+        return requestRepository.findById(requestId).get();
+    }
 }
