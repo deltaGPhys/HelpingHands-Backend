@@ -18,14 +18,14 @@ public class SendMail {
 
      //public static void main(String[] args) {
 
-    public static Boolean sendMessage (String fromEmailAddress, String toEmailAddress, String name, String email, String phonenumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
+    public static Boolean sendMessage (String toEmailAddress, String name, String email, String phonenumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
          // Recipient's email ID needs to be mentioned.
         String to = toEmailAddress;
         //String to = "dtrombello@gmail.com";
 
         // Sender's email ID needs to be mentioned
         //String from = "ddsrwebsite2@gmail.com";
-        String from = fromEmailAddress;
+        String from = "drmanjugoyalwebsite@gmail.com";
 
         // Assuming you are sending email from through gmails smtp
         String host = "smtp.gmail.com";
@@ -44,7 +44,7 @@ public class SendMail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("ddsrwebsite2@gmail.com", "Password");
+                return new PasswordAuthentication("drmanjugoyalwebsite@gmail.com", "Password");
 
             }
 

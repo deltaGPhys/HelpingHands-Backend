@@ -14,7 +14,10 @@ public class ContactService {
     }
 
     public Contact createContact (Contact newContact) {
-        Contact savedContact = contactRepository.save(newContact);
-        return savedContact;
+        Contact contactToEmail =  contactRepository.save(newContact);
+        SendMail.sendMessage()
+        return null;
     }
+
+
 }
