@@ -47,4 +47,9 @@ class RecipientController {
         return new ResponseEntity<>(recipientService.emailAvailable(email), HttpStatus.OK);
     }
 
+    @GetMapping("/{recipientId}")
+    public ResponseEntity<Recipient> getRecipientbyId (@PathVariable Long recipientId){
+        return new ResponseEntity<>(recipientService.getRecipient(recipientId), HttpStatus.OK);
+    }
+
 }

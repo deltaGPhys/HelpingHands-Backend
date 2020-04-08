@@ -18,7 +18,7 @@ public class Request {
     private String typeOfRequest;
     private String requestDescription;
     @ManyToOne
-    @JsonIgnore
+    //@JsonIgnore
     private Recipient recipient;
     private RequestStatus requestStatus = RequestStatus.OPEN;
 

@@ -62,5 +62,8 @@ public class RecipientService {
         else return null;
     }
 
+    public Recipient getRecipient(Long recipientId){
+        return recipientRepository.findById(recipientId).get();
+    }
 
 }
