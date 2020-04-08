@@ -1,6 +1,7 @@
 package com.example.demo;
 
 //import javax.jms.Session;
+import java.time.LocalDate;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -11,13 +12,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendMail {
-       private String fromEmailAddress = "";
-       private String toEmailAddress = "";
+       //private String fromEmailAddress = "";
+       //private String toEmailAddress = "";
 
 
      //public static void main(String[] args) {
 
-    public void sendMessage (String fromEmailAddress, String toEmailAddress){
+    public static Boolean sendMessage (String fromEmailAddress, String toEmailAddress, String name, String email, String phonenumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
          // Recipient's email ID needs to be mentioned.
         String to = toEmailAddress;
         //String to = "dtrombello@gmail.com";
@@ -66,16 +67,23 @@ public class SendMail {
             message.setSubject("New Contact Requests Information!");
 
             // Now set the actual message
-            message.setText("John Smith wants to meet with you to discuss his anxiety");
+            message.setText("Dr. Goyal, \n" +
+                    "The following potential patient has filled out their contact information as follows: \n" +
+                    "Name: " + name + "\n" + "Email: " + email + "\n" + "Phone Number: " + phonenumber + "\n" +
+                    "Date of Birth: " + dateOfBirth + "\n" + "Reason for Contact: " +reasonForContact + "\n" +
+                    "Preferred Appointment Time: " + prefferedApptTime + "\n" + "Message: " + messsage + "\n");
 
             System.out.println("sending...");
             // Send message
             Transport.send(message);
             System.out.println("Sent message successfully....");
+            return true;
         } catch (MessagingException mex) {
             mex.printStackTrace();
+            return false;
         }
 
     }
+
 }
 
