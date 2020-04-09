@@ -2,6 +2,8 @@ package com.example.demo;
 
 //import javax.jms.Session;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.time.LocalDate;
 import java.util.Properties;
 import javax.mail.Message;
@@ -16,7 +18,8 @@ public class SendMail {
 
     //public static void main(String[] args) {
 
-    //@Value("${emailPassword}") String emailPassword
+    @Value("${emailPassword}")
+    static String emailPassword;
     public static Boolean sendMessage (String firstName, String lastName, String email, String phoneNumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
 
         //System.out.println(emailPassword);
@@ -46,7 +49,7 @@ public class SendMail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("drmanjugoyalwebsite@gmail.com", "Gautambudha2020*");
+                return new PasswordAuthentication("drmanjugoyalwebsite@gmail.com", emailPassword);
 
             }
 
