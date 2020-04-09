@@ -21,6 +21,12 @@ class SendMailTest {
 
     @Test
     void sendMessage() {
-        Assertions.assertEquals(true, SendMail.sendMessage(testContact.getEmail(), testContact.getFirstName(), testContact.getLastName(), testContact.getEmail(), testContact.getPhoneNum(), testContact.getBirthDate(), testContact.getReasonForContact(), testContact.getPreferredApptTime(), testContact.getMessage());
+        Assertions.assertEquals(true, SendMail.sendMessage(testContact.getFirstName(), testContact.getLastName(), testContact.getEmail(), testContact.getPhoneNum(), testContact.getBirthDate(), testContact.getReasonForContact(), testContact.getPreferredApptTime(), testContact.getMessage()));
+    }
+
+    @Test
+    void sendMessage2() {
+        testContact.setEmail("John");
+        Assertions.assertEquals(false, SendMail.sendMessage(testContact.getFirstName(), testContact.getLastName(), testContact.getEmail(), testContact.getPhoneNum(), testContact.getBirthDate(), testContact.getReasonForContact(), testContact.getPreferredApptTime(), testContact.getMessage()));
     }
 }

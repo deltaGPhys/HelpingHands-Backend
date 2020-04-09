@@ -17,12 +17,12 @@ public class SendMail {
     //public static void main(String[] args) {
 
     //@Value("${emailPassword}") String emailPassword
-    public static Boolean sendMessage (String toEmailAddress, String firstName, String lastName, String email, String phoneNumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
+    public static Boolean sendMessage (String firstName, String lastName, String email, String phoneNumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
 
         //System.out.println(emailPassword);
 
         // Recipient's email ID needs to be mentioned.
-        String to = toEmailAddress;
+        String to = "davidtrom@hotmail.com";
         //String to = "dtrombello@gmail.com";
 
         // Sender's email ID needs to be mentioned
@@ -66,14 +66,15 @@ public class SendMail {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
             // Set Subject: header field
-            message.setSubject("New Contact Requests Information!");
+            message.setSubject("Potential Patient Requests Information!");
 
             // Now set the actual message
             message.setText("Dr. Goyal, \n" +
-                    "The following potential patient has filled out their contact information as follows: \n" +
+                    "The following potential patient has filled out their contact information as follows: \n" + "\n" +
                     "Name: " + firstName +" " + lastName + "\n" + "Email: " + email + "\n" + "Phone Number: " + phoneNumber + "\n" +
                     "Date of Birth: " + dateOfBirth + "\n" + "Reason for Contact: " +reasonForContact + "\n" +
-                    "Preferred Appointment Time: " + prefferedApptTime + "\n" + "Message: " + messsage + "\n");
+                    "Preferred Appointment Time: " + prefferedApptTime + "\n" + "Message: " + messsage + "\n" + "\n" +
+                     "Sincerely yours," + "\n" + "\n" + "Website Contact "  );
 
             System.out.println("sending...");
             // Send message

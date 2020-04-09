@@ -106,4 +106,19 @@ public class Contact {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", birthDate=" + birthDate +
+                ", reasonForContact='" + reasonForContact + '\'' +
+                ", preferredApptTime='" + preferredApptTime + '\'' +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }
