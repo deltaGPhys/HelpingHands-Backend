@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 public class Contact {
 
     @Id
+    @GeneratedValue
     private Long id;
     private String firstName;
     private String lastName;

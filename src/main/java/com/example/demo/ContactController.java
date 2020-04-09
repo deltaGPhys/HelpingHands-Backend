@@ -13,7 +13,7 @@ public class ContactController {
     private ContactService contactService;
 
     @PostMapping("/send-email")
-    public ResponseEntity<Contact> saveAndEmailContact (Contact contact){
+    public ResponseEntity<Boolean> saveAndEmailContact (Contact contact){
         return new ResponseEntity<>(contactService.createContact(contact), HttpStatus.OK);
     }
 

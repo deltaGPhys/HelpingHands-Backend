@@ -1,7 +1,6 @@
 package com.example.demo;
 
 //import javax.jms.Session;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDate;
 import java.util.Properties;
@@ -17,8 +16,10 @@ public class SendMail {
 
     //public static void main(String[] args) {
 
-    public static Boolean sendMessage (String toEmailAddress, @Value("${emailPassword}") String emailPassword, String firstName, String lastName, String email, String phoneNumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
+    //@Value("${emailPassword}") String emailPassword
+    public static Boolean sendMessage (String toEmailAddress, String firstName, String lastName, String email, String phoneNumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
 
+        //System.out.println(emailPassword);
 
         // Recipient's email ID needs to be mentioned.
         String to = toEmailAddress;
@@ -45,7 +46,7 @@ public class SendMail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("drmanjugoyalwebsite@gmail.com", emailPassword);
+                return new PasswordAuthentication("drmanjugoyalwebsite@gmail.com", "Gautambudha2020*");
 
             }
 

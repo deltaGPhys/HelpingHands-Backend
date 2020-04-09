@@ -13,13 +13,12 @@ public class ContactService {
         return contactRepository.findAll();
     }
 
-    public Contact createContact (Contact newContact) {
+    public Boolean createContact (Contact newContact) {
         Contact contactToEmail =  contactRepository.save(newContact);
-        SendMail.sendMessage(contactToEmail.getEmail(), "${emailPassword}", contactToEmail.getFirstName(),
+        return SendMail.sendMessage(contactToEmail.getEmail(), contactToEmail.getFirstName(),
                 contactToEmail.getLastName(), contactToEmail.getEmail(), contactToEmail.getPhoneNum(),
                 contactToEmail.getBirthDate(), contactToEmail.getReasonForContact(), contactToEmail.getPreferredApptTime(),
                 contactToEmail.getMessage());
-        return null;
     }
 
 
