@@ -1,6 +1,8 @@
 package com.example.demo;
 
 //import javax.jms.Session;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.time.LocalDate;
 import java.util.Properties;
 import javax.mail.Message;
@@ -12,14 +14,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendMail {
-       //private String fromEmailAddress = "";
-       //private String toEmailAddress = "";
+
+    //public static void main(String[] args) {
+
+    public static Boolean sendMessage (String toEmailAddress, @Value("${emailPassword}") String emailPassword, String firstName, String lastName, String email, String phoneNumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
 
 
-     //public static void main(String[] args) {
-
-    public static Boolean sendMessage (String toEmailAddress, String name, String email, String phonenumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
-         // Recipient's email ID needs to be mentioned.
+        // Recipient's email ID needs to be mentioned.
         String to = toEmailAddress;
         //String to = "dtrombello@gmail.com";
 
@@ -44,7 +45,7 @@ public class SendMail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("drmanjugoyalwebsite@gmail.com", "Password");
+                return new PasswordAuthentication("drmanjugoyalwebsite@gmail.com", emailPassword);
 
             }
 
@@ -69,7 +70,7 @@ public class SendMail {
             // Now set the actual message
             message.setText("Dr. Goyal, \n" +
                     "The following potential patient has filled out their contact information as follows: \n" +
-                    "Name: " + name + "\n" + "Email: " + email + "\n" + "Phone Number: " + phonenumber + "\n" +
+                    "Name: " + firstName +" " + lastName + "\n" + "Email: " + email + "\n" + "Phone Number: " + phoneNumber + "\n" +
                     "Date of Birth: " + dateOfBirth + "\n" + "Reason for Contact: " +reasonForContact + "\n" +
                     "Preferred Appointment Time: " + prefferedApptTime + "\n" + "Message: " + messsage + "\n");
 

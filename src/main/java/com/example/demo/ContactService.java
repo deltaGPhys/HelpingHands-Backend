@@ -15,7 +15,10 @@ public class ContactService {
 
     public Contact createContact (Contact newContact) {
         Contact contactToEmail =  contactRepository.save(newContact);
-        SendMail.sendMessage()
+        SendMail.sendMessage(contactToEmail.getEmail(), "${emailPassword}", contactToEmail.getFirstName(),
+                contactToEmail.getLastName(), contactToEmail.getEmail(), contactToEmail.getPhoneNum(),
+                contactToEmail.getBirthDate(), contactToEmail.getReasonForContact(), contactToEmail.getPreferredApptTime(),
+                contactToEmail.getMessage());
         return null;
     }
 
