@@ -3,6 +3,10 @@ package com.example.demo;
 //import javax.jms.Session;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Properties;
@@ -13,20 +17,17 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
+@Service
 public class SendMail {
 
     //public static void main(String[] args) {
 
-    @Value("${emailPassword}")
-    static String emailPassword;
     public static Boolean sendMessage (String firstName, String lastName, String email, String phoneNumber, LocalDate dateOfBirth, String reasonForContact, String prefferedApptTime, String messsage){
 
-        //System.out.println(emailPassword);
+        String emailPassword = System.getenv("emailPassword");
 
         // Recipient's email ID needs to be mentioned.
-        String to = "davidtrom@hotmail.com";
-        //String to = "dtrombello@gmail.com";
+        String to = "dtrombello@gmail.com";
 
         // Sender's email ID needs to be mentioned
         //String from = "ddsrwebsite2@gmail.com";
