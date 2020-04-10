@@ -2,10 +2,6 @@ package com.example.demo;
 
 //import javax.jms.Session;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -27,7 +23,8 @@ public class SendMail {
         String emailPassword = System.getenv("emailPassword");
 
         // Recipient's email ID needs to be mentioned.
-        String to = "dtrombello@gmail.com";
+        String to = "davidtrom@hotmail.com";
+        //String to = "dtrombello@gmail.com";
 
         // Sender's email ID needs to be mentioned
         //String from = "ddsrwebsite2@gmail.com";
